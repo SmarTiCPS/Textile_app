@@ -1,0 +1,14 @@
+<div class="notification-container">
+    <div *ngFor="let alert of alerts" class="alert" [ngClass]="getAlertClass(alert)">
+      <div class="alert-content">
+        <div class="alert-message">{{ alert.message }}</div>
+        <div class="alert-details">
+          <span class="alert-topic">{{ alert.topic }}</span>
+          <span class="alert-value">{{ alert.value }}{{ alert.unit }}</span>
+          <span class="alert-limit">(Limit: {{ alert.limit }}{{ alert.unit }})</span>
+        </div>
+      </div>
+      <button class="close-btn" (click)="dismiss(alert.id)">&times;</button>
+      <div class="progress-bar" [style.width.%]="getProgress(alert)"></div>
+    </div>
+  </div>

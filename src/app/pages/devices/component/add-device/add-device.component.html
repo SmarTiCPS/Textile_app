@@ -1,0 +1,70 @@
+<h2 mat-dialog-title>Add New Device</h2>
+<mat-dialog-content>
+  <mat-card>
+    <form [formGroup]="deviceForm" (ngSubmit)="onSubmit()">
+      <mat-form-field appearance="outline" class="w-100">
+        <mat-label>Device Name</mat-label>
+        <input matInput formControlName="name" required>
+        <mat-error *ngIf="deviceForm.get('name')?.hasError('required')">
+          Name is required
+        </mat-error>
+        <mat-error *ngIf="deviceForm.get('name')?.hasError('minlength')">
+          Minimum 3 characters required
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="w-100">
+        <mat-label>Location</mat-label>
+        <input matInput formControlName="location" required>
+        <mat-error *ngIf="deviceForm.get('location')?.hasError('required')">
+          Location is required
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="w-100">
+        <mat-label>Type</mat-label>
+        <input matInput formControlName="type" required>
+        <mat-error *ngIf="deviceForm.get('type')?.hasError('required')">
+          Type is required
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="w-100">
+        <mat-label>Factory</mat-label>
+        <mat-select formControlName="factory_id" required>
+          <mat-option *ngFor="let factory of factories" [value]="factory.id">
+            {{ factory.name }}
+          </mat-option>
+        </mat-select>
+        <mat-error *ngIf="deviceForm.get('factory_id')?.hasError('required')">
+          Factory is required
+        </mat-error>
+      </mat-form-field>
+
+      <div class="attribute-section">
+        <div class="attribute-header">
+          <h3>Attributes</h3>
+          <app-popup-attribute></app-popup-attribute>
+        </div>
+        
+        <mat-selection-list #attributesList>
+          <mat-list-option *ngFor="let attr of attributes" [value]="attr.id" 
+                          (selectedChange)="onAttributeSelectionChange(attr.id, $event)">
+            {{ attr.attribute }} ({{ attr.unit || 'no unit' }})
+          </mat-list-option>
+        </mat-selection-list>
+      </div>
+
+      <div class="actions">
+        <button mat-button type="button" (click)="dialogRef.close()">Cancel</button>
+        <button 
+          mat-raised-button 
+          color="primary" 
+          type="submit"
+          [disabled]="isLoading || deviceForm.invalid">
+          {{ isLoading ? 'Uploading...' : 'Add Device' }}
+        </button>
+      </div>
+    </form>
+  </mat-card>
+</mat-dialog-content>

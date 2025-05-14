@@ -1,0 +1,28 @@
+.notification-item {
+    display: flex;
+    align-items: center;
+    
+    padding: 8px 0;
+  }
+  
+  .notification-icon {
+    margin-right: 12px;
+    color: #757575;
+  }
+  
+  .notification-content {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .notification-event {
+    font-size: 14px;
+    font-weight: 500;
+    color: #212121;
+  }
+  
+  .notification-time {
+    font-size: 12px;
+    color: #757575; 
+    display: flex;
+  }

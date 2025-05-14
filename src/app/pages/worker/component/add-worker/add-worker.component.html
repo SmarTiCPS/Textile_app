@@ -1,0 +1,91 @@
+<h2 mat-dialog-title>{{ isEditMode ? 'Edit' : 'Add New' }} Worker</h2>
+<mat-dialog-content>
+  <form [formGroup]="workerForm" (ngSubmit)="onSubmit()">
+    <div class="form-row">
+      <mat-form-field appearance="outline" class="w-100">
+        <mat-label>First Name</mat-label>
+        <input matInput formControlName="first_name" required>
+        <mat-error *ngIf="workerForm.get('first_name')?.hasError('required')">
+          First name is required
+        </mat-error>
+        <mat-error *ngIf="workerForm.get('first_name')?.hasError('minlength')">
+          Minimum 2 characters required
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="w-100">
+        <mat-label>Last Name</mat-label>
+        <input matInput formControlName="second_name" required>
+        <mat-error *ngIf="workerForm.get('second_name')?.hasError('required')">
+          Last name is required
+        </mat-error>
+        <mat-error *ngIf="workerForm.get('second_name')?.hasError('minlength')">
+          Minimum 2 characters required
+        </mat-error>
+      </mat-form-field>
+    </div>
+
+    <mat-form-field appearance="outline" class="w-100">
+      <mat-label>Email</mat-label>
+      <input matInput formControlName="email" type="email" required>
+      <mat-error *ngIf="workerForm.get('email')?.hasError('required')">
+        Email is required
+      </mat-error>
+      <mat-error *ngIf="workerForm.get('email')?.hasError('email')">
+        Please enter a valid email
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="w-100">
+      <mat-label>Phone Number</mat-label>
+      <input matInput formControlName="phone_number" required>
+      <mat-error *ngIf="workerForm.get('phone_number')?.hasError('required')">
+        Phone number is required
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="w-100">
+      <mat-label>Address</mat-label>
+      <input matInput formControlName="address">
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="w-100">
+      <mat-label>Birthday</mat-label>
+      <input matInput [matDatepicker]="picker" formControlName="birthday">
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+
+    <div class="skill-section">
+      <div class="skill-header">
+        <h3>Skills ({{ skillSelection.selected.length }} selected)</h3>
+        <div>
+          <button mat-mini-fab color="primary" class="icon-30" 
+                matTooltip="Add new skill" (click)="openDialog()">
+                <mat-icon class="d-flex align-items-center">
+                  <i-tabler name="plus" class="icon-18 d-flex"></i-tabler>
+                </mat-icon>
+          </button>
+        </div>
+      </div>
+      
+      <mat-selection-list #attributesList>
+        <mat-list-option *ngFor="let skill of skills" [value]="skill.idskill" 
+                        (selectedChange)="onSkillSelectionChange(skill.idskill, $event)">
+          {{ skill.type }} ({{ skill.description || 'no description' }})
+        </mat-list-option>
+      </mat-selection-list>
+    </div>
+
+    <div class="actions">
+      <button mat-button type="button" (click)="dialogRef.close()">Cancel</button>
+      <button 
+        mat-raised-button 
+        color="primary" 
+        type="submit"
+        [disabled]="isLoading || workerForm.invalid">
+        {{ isLoading ? 'Processing...' : (isEditMode ? 'Update' : 'Add') }} Worker
+      </button>
+    </div>
+  </form>
+</mat-dialog-content>

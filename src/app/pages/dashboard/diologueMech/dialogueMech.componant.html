@@ -1,0 +1,20 @@
+<h2 mat-dialog-title>Machine Description</h2>
+<mat-dialog-content>
+  <mat-card style="max-width: 400px;margin-bottom: 8px;" appearance="outlined">
+    <mat-card-header>
+      <mat-card-title-group>
+        <mat-card-title>{{ data.title }}</mat-card-title>
+        <mat-card-subtitle>Small</mat-card-subtitle>
+        <img
+        src="{{ data.imgSrc }}"
+        alt="imgSrc"
+        class="w-100"
+        mat-card-sm-image 
+        />
+      </mat-card-title-group>
+    </mat-card-header>
+    <mat-card-content>
+      {{longText}}
+    </mat-card-content>     
+  </mat-card>
+</mat-dialog-content>

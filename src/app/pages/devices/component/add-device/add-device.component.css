@@ -1,0 +1,29 @@
+/* add-device.component.css */
+.w-100 {
+  width: 100%;
+}
+
+.attribute-section {
+  margin: 20px 0;
+  border: 1px solid #eee;
+  padding: 15px;
+  border-radius: 4px;
+}
+
+.attribute-section h3 {
+  margin-top: 0;
+  display: inline-block;
+}
+
+.actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+  margin-top: 16px;
+}
+
+mat-selection-list {
+  max-height: 200px;
+  overflow: auto;
+  margin-top: 10px;
+}

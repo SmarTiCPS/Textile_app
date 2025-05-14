@@ -1,0 +1,40 @@
+.container {
+    padding: 20px;
+  }
+  
+  .header-section {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  
+  .search-section {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+  
+  .search-field {
+    width: 300px;
+  }
+  
+  .loading-spinner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 200px;
+  }
+  
+  .mat-elevation-z8 {
+    overflow-x: auto;
+  }
+  
+  mat-chip {
+    margin: 2px;
+  }
+  
+  mat-icon {
+    cursor: pointer;
+  }

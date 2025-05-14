@@ -1,0 +1,27 @@
+<div class="container">
+    <div class="row">
+      <div class="col-12">
+        <h1>Factories</h1>
+      </div>
+    </div>
+  
+    <div *ngIf="isLoading" class="text-center">
+      <mat-spinner diameter="50"></mat-spinner>
+      <p>Loading factories...</p>
+    </div>
+  
+    <div class="row">
+      <div class="col-sm-6 col-lg-3" *ngFor="let factory of factories">
+        <app-factory-card *ngIf="factory" [factory]="factory" (delete)="onDelete(factory.id)"></app-factory-card>
+      </div>
+      <div class="col-sm-6 col-lg-3">
+        <mat-card class="cardWithShadow">
+          <p *ngIf="factories.length <= 0">No factories added yet</p>
+          <p *ngIf="factories.length > 0">Add new factory</p>
+          <mat-card-content>
+            <app-popup-factory></app-popup-factory>
+          </mat-card-content>
+        </mat-card>
+      </div>
+    </div>
+  </div>

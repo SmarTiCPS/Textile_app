@@ -1,0 +1,15 @@
+.w-100 {
+  width: 100%;
+  margin-bottom: 15px;
+}
+
+.actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+  margin-top: 16px;
+}
+
+textarea {
+  min-height: 80px;
+}

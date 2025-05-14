@@ -1,0 +1,36 @@
+<h2 mat-dialog-title>Add New attribute</h2>
+<mat-dialog-content>
+  <mat-card>
+    <form [formGroup]="attributeForm" (ngSubmit)="onSubmit()">
+      <mat-form-field appearance="outline" class="w-100">
+        <mat-label>attribute Name</mat-label>
+        <input matInput formControlName="attribute" required>
+        <mat-error *ngIf="attributeForm.get('attribute')?.hasError('required')">
+          Attribute Name is required
+        </mat-error>
+        <mat-error *ngIf="attributeForm.get('attribute')?.hasError('minlength')">
+          Minimum 2 characters required
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="w-100">
+        <mat-label>Unit</mat-label>
+        <input matInput formControlName="unit" required>
+        <mat-error *ngIf="attributeForm.get('unit')?.hasError('required')">
+          Unit is required
+        </mat-error>
+      </mat-form-field>
+
+      <div class="actions">
+        <button mat-button type="button" (click)="dialogRef.close()">Cancel</button>
+        <button 
+          mat-raised-button 
+          color="primary" 
+          type="submit"
+          [disabled]="isLoading || attributeForm.invalid">
+          {{ isLoading ? 'Uploading...' : 'Add Device' }}
+        </button>
+      </div>
+    </form>
+  </mat-card>
+</mat-dialog-content>

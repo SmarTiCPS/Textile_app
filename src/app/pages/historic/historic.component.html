@@ -1,0 +1,16 @@
+<div class="row">
+    <!-- --------------------------------------------------------------------------- -->
+    <!-- Profit & Expenses -->
+    <!-- --------------------------------------------------------------------------- -->
+    <div class="col-lg-6" *ngFor="let topicEvent of attributes">
+      <mat-card class="cardWithShadow" >
+        <mat-card-content class="p-24">
+          <div class="d-flex w-100">
+            <mat-card-title class="p-20">{{ topicEvent.attribute }}</mat-card-title>
+          </div>
+          
+          <app-echart-graph [graphTopic]="topicEvent"></app-echart-graph>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </div>

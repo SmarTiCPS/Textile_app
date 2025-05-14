@@ -1,0 +1,43 @@
+.w-100 {
+  width: 100%;
+  margin-bottom: 15px;
+}
+
+.form-row {
+  display: flex;
+  gap: 15px;
+}
+
+.form-row .w-100 {
+  flex: 1;
+}
+
+.skill-section {
+  margin: 20px 0;
+  border: 1px solid #eee;
+  padding: 15px;
+  border-radius: 4px;
+}
+
+.skill-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.skill-header h3 {
+  margin: 0;
+}
+
+.actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+  margin-top: 16px;
+}
+
+mat-selection-list {
+  max-height: 200px;
+  overflow: auto;
+}

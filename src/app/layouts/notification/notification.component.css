@@ -1,0 +1,88 @@
+.notification-container {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 1000;
+    display: flex;
+    flex-direction: column-reverse;
+    gap: 10px;
+  }
+  
+  .alert {
+    position: relative;
+    min-width: 300px;
+    max-width: 350px;
+    padding: 15px;
+    border-radius: 4px;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+    color: white;
+    overflow: hidden;
+    animation: slideIn 0.3s ease-out;
+  }
+  
+  @keyframes slideIn {
+    from { transform: translateX(100%); opacity: 0; }
+    to { transform: translateX(0); opacity: 1; }
+  }
+  
+  .alert-temperature-celsius {
+    background-color: #ff6b6b; /* Red for temperature */
+  }
+  
+  .alert-humidity {
+    background-color: #fc6c19; /* Blue for humidity */
+  }
+  
+  .alert-air-quality {
+    background-color: #fc8719; /* Green for air quality */
+  }
+  .alert-camera {
+    background-color: #fa6956; /* Blue for humidity */
+  }
+  .alert-distance {
+    background-color: #fcc419; /* Yellow for distance */
+  }
+  
+  .alert-content {
+    margin-bottom: 10px;
+  }
+  
+  .alert-message {
+    font-weight: bold;
+    margin-bottom: 5px;
+  }
+  
+  .alert-details {
+    display: flex;
+    gap: 8px;
+    font-size: 0.9em;
+    flex-wrap: wrap;
+  }
+  
+  .close-btn {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    background: transparent;
+    border: none;
+    color: white;
+    font-size: 1.2em;
+    cursor: pointer;
+    padding: 5px;
+  }
+  
+  .progress-bar {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 3px;
+    background-color: rgba(255, 255, 255, 0.7);
+    width: 100%;
+    transform-origin: left;
+    animation: progressBar 5s linear forwards;
+  }
+  
+  @keyframes progressBar {
+    from { transform: scaleX(1); }
+    to { transform: scaleX(0); }
+  }

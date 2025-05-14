@@ -1,0 +1,27 @@
+<mat-card class="cardWithShadow">
+    <mat-card-content class="p-24">  
+      <!-- Alert History (persistent) -->
+      <mat-card-title class="m-t-32">Alert History</mat-card-title>
+      <div class="alert-list timeline m-t-24"  *ngIf="alertHistory.length > 0">
+        <div class="alert-item"  *ngFor="let alert of alertHistory">
+          <div class="alert-icon" [ngClass]="getAlertIcon(alert.topic)">
+            <!-- <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" [attr.fill]="getAlertColor(alert.topic)">
+              <path [attr.d]="getAlertPath(alert.topic)"></path>
+            </svg> -->
+            <mat-icon class="d-flex align-items-center">
+              <i-tabler [name]="getAlertIcon(alert.topic)" class="icon-18 d-flex" ></i-tabler>
+            </mat-icon>
+          </div>
+          <div class="alert-content">
+            <div class="alert-time">{{alert.date}} {{alert.time}}</div>
+            <div class="alert-message">{{alert.message}} 
+              <a [href]="alert.link" class="alert-link">view details</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div *ngIf="alertHistory.length === 0" class="no-alerts">
+        No alert history
+      </div>
+    </mat-card-content>
+  </mat-card>

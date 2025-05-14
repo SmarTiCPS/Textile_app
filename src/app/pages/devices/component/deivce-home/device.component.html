@@ -1,0 +1,31 @@
+<div class="container">
+    <div class="row">
+      <div class="col-12">
+        <h1>Devices</h1>
+      </div>
+    </div>
+  
+    <div *ngIf="isLoading" class="text-center">
+      <mat-spinner diameter="50"></mat-spinner>
+      <p>Loading devices...</p>
+    </div>
+  
+    <div class="row">
+      <div class="col-sm-6 col-lg-3" *ngFor="let device of devices">
+        <app-device-card *ngIf="device" [device]="device" (delete)="onDelete(device.id)"></app-device-card>
+        <div *ngIf="isDeleting" class="text-center">
+          <mat-spinner diameter="50"></mat-spinner>
+          <p>Delete devices...</p>
+        </div>
+      </div>
+      <div class="col-sm-6 col-lg-3">
+        <mat-card class="cardWithShadow">
+          <p *ngIf="devices.length <= 0">No devices added yet</p>
+          <p *ngIf="devices.length > 0">Add new device</p>
+          <mat-card-content>
+            <app-popup-device></app-popup-device>
+          </mat-card-content>
+        </mat-card>
+      </div>
+    </div>
+  </div>

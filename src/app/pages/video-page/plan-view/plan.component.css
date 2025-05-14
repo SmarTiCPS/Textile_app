@@ -1,0 +1,21 @@
+.floor-plan-container {
+    position: relative;
+    display: inline-block;
+    margin: auto;
+  }
+  
+  .floor-plan-image {
+    width: 100%;
+    height: 100%;
+  }
+  
+  .interactive-area {
+    position: absolute;
+    background: rgba(255, 0, 0, 0.3);
+    border: 2px solid red;
+    cursor: pointer;
+  }
+  
+  .interactive-area:hover {
+    background: rgba(0, 255, 0, 0.3);
+  }

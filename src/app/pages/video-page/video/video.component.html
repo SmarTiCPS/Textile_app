@@ -1,0 +1,102 @@
+<!-- ============================================================== -->
+<!-- Simple four boxes Row -->
+<!-- ============================================================== -->
+<mat-card class="cardWithShadow">
+    <mat-card-content>
+      <mat-card-title>Video Streaming Page</mat-card-title>
+    </mat-card-content>
+    <div class="row ">
+      <div class="col-lg-7">
+      <mat-form-field class="w-100" appearance="outline">
+        <mat-label>Select an option</mat-label>
+        <mat-select matInput [(value)]="selected">
+          <mat-option value="all">all</mat-option>
+          <mat-option *ngFor="let productcard of productcards" value="{{productcard.title}}">{{ productcard.title }}</mat-option>
+        </mat-select>
+      </mat-form-field>
+      </div>
+      <div class="col-lg-5">
+        <p> {{selected}}</p>
+      </div>
+    </div>
+    <div class="row">
+      <!-- --------------------------------------------------------------------------- -->
+      <!-- Profit & Expenses -->
+      <!-- --------------------------------------------------------------------------- -->
+      <div class="col-lg-12">
+        <mat-card class="cardWithShadow">
+          <mat-card-content class="p-24">
+            <div class="row">
+              <div class="col-sm-6 col-lg-3" *ngFor="let productcard of productcards">
+                <mat-card class="cardWithShadow productcard overflow-hidden">
+                  
+                    <video
+                      [src]="'http://4.233.148.211:8000/maher/cam1/' + productcard.vidSrc"
+                      controls
+                      class="w-100"
+                      mat-card-image>
+                    </video>
+                 
+                  <mat-card-content class="p-b-4 p-t-1 position-relative">
+                    
+                    <mat-card-title class="mat-headline-2 f-s-16 m-b-40">{{
+                      productcard.title
+                    }}</mat-card-title>
+                  </mat-card-content>
+                </mat-card>
+              </div>
+            </div>
+          </mat-card-content>
+        </mat-card>
+      </div>
+    </div>
+</mat-card>
+
+
+<mat-card class="cardWithShadow">
+  <mat-card-content>
+    <mat-card-title>iot data historic</mat-card-title>
+  </mat-card-content>
+  <mat-form-field>
+    <mat-label>Filter</mat-label>
+    <input matInput (keyup)="applyFilter($event)" placeholder="Ex. Mia" #input>
+  </mat-form-field>
+<div class="mat-elevation-z8">
+  <table mat-table [dataSource]="dataSource" matSort>
+    <ng-container matColumnDef="id">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> id </th>
+      <td mat-cell *matCellDef="let row"> {{row.id}} </td>
+    </ng-container>
+    <!-- ID Column -->
+    <ng-container matColumnDef="typeevent">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> typeevent </th>
+      <td mat-cell *matCellDef="let row"> {{row.typeevent}} </td>
+    </ng-container>
+
+    <!-- Progress Column -->
+    <ng-container matColumnDef="date">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> date </th>
+      <td mat-cell *matCellDef="let row"> {{row.date}} </td>
+    </ng-container>
+
+    <!-- Name Column -->
+    <ng-container matColumnDef="data">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> data </th>
+      <td mat-cell *matCellDef="let row"> {{row.data}} </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+    <!-- Row shown when there is no matching data. -->
+    <tr class="mat-row" *matNoDataRow>
+      <td class="mat-cell" colspan="4">No data matching the filter "{{input.value}}"</td>
+    </tr>
+  </table>
+
+  <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Select page of users"></mat-paginator>
+</div>
+</mat-card>
+
+
+  

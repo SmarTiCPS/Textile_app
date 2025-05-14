@@ -1,0 +1,17 @@
+run zookeeper  :
+D:/kafka/bin/windows/zookeeper-server-start.bat D:\kafka\config\zookeeper.properties
+run server :
+D:\kafka\bin\windows\kafka-server-start.bat D:\kafka\config\server.properties
+create new topic :
+D:\kafka\bin\windows\kafka-topics.bat --create --topic hello_world --bootstrap-server localhost:9092 --replication-factor 1 --partitions 1
+run producer : 
+D:\kafka\bin\windows\kafka-console-producer.bat --topic humidity --bootstrap-server localhost:9092 
+run consumer : 
+D:\kafka\bin\windows\kafka-console-consumer.bat --topic humidity --from-beginning  --bootstrap-server localhost:9092
+
+topic names : temperature_celsius / temperature_fahrenheit / humidity / air_quality /anomaly /humidity_model / distance 
+D:\kafka\bin\windows\kafka-topics.bat --create --topic temperature_celsius --bootstrap-server localhost:9092 --replication-factor 1 --partitions 1
+D:\kafka\bin\windows\kafka-topics.bat --create --topic humidity --bootstrap-server localhost:9092 --replication-factor 1 --partitions 1
+D:\kafka\bin\windows\kafka-topics.bat --create --topic air_quality --bootstrap-server localhost:9092 --replication-factor 1 --partitions 1
+D:\kafka\bin\windows\kafka-topics.bat --create --topic distance --bootstrap-server localhost:9092 --replication-factor 1 --partitions 1
+D:\kafka\bin\windows\kafka-topics.bat --create --topic camera --bootstrap-server localhost:9092 --replication-factor 1 --partitions 1

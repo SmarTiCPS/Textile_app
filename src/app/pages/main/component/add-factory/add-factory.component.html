@@ -1,0 +1,47 @@
+<h2 mat-dialog-title>Add New Factory</h2>
+<mat-dialog-content>
+  <mat-card>
+    <form [formGroup]="factoryForm" (ngSubmit)="onSubmit()">
+      <mat-form-field appearance="outline" class="w-100">
+        <mat-label>Factory Name</mat-label>
+        <input matInput formControlName="name" required>
+        <mat-error *ngIf="factoryForm.get('name')?.hasError('required')">
+          Name is required
+        </mat-error>
+        <mat-error *ngIf="factoryForm.get('name')?.hasError('minlength')">
+          Minimum 3 characters required
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="w-100">
+        <mat-label>Address</mat-label>
+        <input matInput formControlName="address" required>
+        <mat-error *ngIf="factoryForm.get('address')?.hasError('required')">
+          Address is required
+        </mat-error>
+      </mat-form-field>
+
+      <div class="file-upload-section">
+        <h3>3D Model</h3>
+        <input type="file" accept=".glb,.gltf,.fbx" (change)="onModelSelected($event)">
+        <small>Supported formats: .glb, .gltf, .fbx</small>
+      </div>
+
+      <div class="file-upload-section">
+        <h3>Factory Photo</h3>
+        <input type="file" accept="image/*" (change)="onPhotoSelected($event)">
+        <div class="photo-preview" *ngIf="photoPreview">
+          <img [src]="photoPreview" alt="Preview">
+        </div>
+      </div>
+
+      <button 
+        mat-raised-button 
+        color="primary" 
+        type="submit"
+        [disabled]="isLoading || factoryForm.invalid">
+        {{ isLoading ? 'Uploading...' : 'Add Factory' }}
+      </button>
+    </form>
+  </mat-card>
+</mat-dialog-content>

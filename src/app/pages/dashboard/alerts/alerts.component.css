@@ -1,0 +1,148 @@
+/* Add to your alerts.component.css */
+.alert-item {
+    display: flex;
+    padding: 12px 0;
+    border-bottom: 1px solid #f58a8a;
+    align-items: flex-start;
+    gap: 12px;
+    transition: all 0.3s ease;
+  }
+  
+  .alert-item.resolved {
+    opacity: 0.7;
+    background-color: #f58a8a;
+  }
+  
+  .alert-item.resolved .alert-message {
+    text-decoration: line-through;
+  }
+  
+  .alert-icon {
+    width: 24px;
+    height: 24px;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+  
+  .alert-content {
+    flex: 1;
+  }
+  
+  .alert-time {
+    font-size: 12px;
+    color: #666;
+    margin-bottom: 4px;
+  }
+  
+  .alert-message {
+    font-size: 14px;
+    color: #333;
+    line-height: 1.4;
+  }
+  
+  .alert-details {
+    color: #666;
+    font-size: 0.9em;
+  }
+  
+  .alert-link {
+    color: #0066cc;
+    text-decoration: none;
+    font-size: 12px;
+    margin-left: 8px;
+    font-weight: 500;
+  }
+  
+  .alert-link:hover {
+    text-decoration: underline;
+  }
+  
+  .no-alerts {
+    padding: 16px;
+    text-align: center;
+    color: #666;
+    font-style: italic;
+  }
+  .alert-container {
+    font-family: Arial, sans-serif;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    background-color: #f58a8a;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    width: 100%;
+    max-width: 400px;
+  }
+  
+  
+  .alert-list {
+    max-height: 400px;
+    overflow-y: auto;
+    /* Hide scrollbar for Chrome, Safari and Opera */
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* IE and Edge */
+  }
+  
+  .alert-list::-webkit-scrollbar {
+    display: none; /* Chrome, Safari and Opera */
+  }
+  
+  .alert-item {
+    display: flex;
+    padding: 12px 0;
+    border-bottom: 1px solid #f5f5f5;
+    align-items: flex-start;
+    gap: 12px;
+  }
+  
+  .alert-item:last-child {
+    border-bottom: none;
+  }
+  
+  .alert-icon {
+    width: 24px;
+    height: 24px;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+  
+  .worker-icon svg {
+    fill: #FF6B6B; /* Red for worker alerts */
+  }
+  
+  .material-icon svg {
+    fill: #4ECDC4; /* Teal for material alerts */
+  }
+  
+  .machine-icon svg {
+    fill: #FFA500; /* Orange for machine alerts */
+  }
+  
+  .alert-content {
+    flex: 1;
+  }
+  
+  .alert-time {
+    font-size: 12px;
+    color: #666;
+    margin-bottom: 4px;
+  }
+  
+  .alert-message {
+    font-size: 14px;
+    color: #333;
+    line-height: 1.4;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .alert-link {
+    color: #0066cc;
+    text-decoration: none;
+    font-size: 12px;
+    margin-left: 4px;
+    font-weight: 500;
+  }
+  
+  .alert-link:hover {
+    text-decoration: underline;
+  }

@@ -1,0 +1,154 @@
+<div class="blank-layout-container justify-content-center align-items-center bg-light-primary">
+  <div class="position-relative row w-100 h-100 bg-gredient justify-content-center">
+    <div class="col-lg-4 d-flex align-items-center">
+      <mat-card class="cardWithShadow boxed-auth">
+        <mat-card-content class="p-32">
+          <div class="text-center">
+            <a [routerLink]="['/dashboard']">
+              <img
+                src="./assets/images/logos/dark-logo.svg"
+                class="align-middle m-2"
+                alt="logo"
+              />
+            </a>
+          </div>
+
+          <div class="row m-t-24 custom-row">
+            <div class="col-12 col-sm-6">
+              <button mat-stroked-button class="w-100">
+                <div class="d-flex align-items-center">
+                  <img
+                    src="/assets/images/svgs/google-icon.svg"
+                    alt="google"
+                    width="16"
+                    class="m-r-8"
+                  />
+                  Sign in with Google
+                </div>
+              </button>
+            </div>
+            <div class="col-12 col-sm-6">
+              <button
+                mat-stroked-button
+                class="w-100 d-flex align-items-center"
+              >
+                <div class="d-flex align-items-center">
+                  <img
+                    src="/assets/images/svgs/facebook-icon.svg"
+                    alt="facebook"
+                    width="40"
+                    class="m-r-4"
+                  />
+                  Sign in with FB
+                </div>
+              </button>
+            </div>
+          </div>
+
+          <div class="or-border m-t-30">or sign up with</div>
+          <form [formGroup]="form" class="m-t-30" (ngSubmit)="onSubmit()" *ngIf="!isLoading">
+            <!-- First Name -->
+            <mat-label class="mat-subtitle-2 f-s-14 f-w-600 m-b-12 d-block">First Name</mat-label>
+            <mat-form-field appearance="outline" class="w-100" color="primary">
+              <input matInput formControlName="firstname" placeholder="First Name">
+              <mat-error *ngIf="f['firstname'].errors?.['required']">First name is required</mat-error>
+              <mat-error *ngIf="f['firstname'].errors?.['minlength']">Minimum 6 characters required</mat-error>
+            </mat-form-field>
+
+            <!-- Second Name -->
+            <mat-label class="mat-subtitle-2 f-s-14 f-w-600 m-b-12 d-block">Second Name</mat-label>
+            <mat-form-field appearance="outline" class="w-100" color="primary">
+              <input matInput formControlName="secondname" placeholder="Second Name">
+              <mat-error *ngIf="f['secondname'].errors?.['required']">Second name is required</mat-error>
+              <mat-error *ngIf="f['secondname'].errors?.['minlength']">Minimum 6 characters required</mat-error>
+            </mat-form-field>
+
+            <!-- Email -->
+            <mat-label class="mat-subtitle-2 f-s-14 f-w-600 m-b-12 d-block">Email Address</mat-label>
+            <mat-form-field appearance="outline" class="w-100" color="primary">
+              <input matInput formControlName="email" type="email" placeholder="Email">
+              <mat-error *ngIf="f['email'].errors?.['required']">Email is required</mat-error>
+              <mat-error *ngIf="f['email'].errors?.['email']">Please enter a valid email</mat-error>
+            </mat-form-field>
+
+            <!-- Phone Number -->
+            <mat-label class="mat-subtitle-2 f-s-14 f-w-600 m-b-12 d-block">Phone Number</mat-label>
+            <mat-form-field appearance="outline" class="w-100" color="primary">
+              <input matInput formControlName="telnumber" placeholder="Phone Number">
+              <mat-error *ngIf="f['telnumber'].errors?.['required']">Phone number is required</mat-error>
+            </mat-form-field>
+
+            <!-- Address -->
+            <mat-label class="mat-subtitle-2 f-s-14 f-w-600 m-b-12 d-block">Address</mat-label>
+            <mat-form-field appearance="outline" class="w-100" color="primary">
+              <textarea matInput formControlName="addresses" placeholder="Your Address" rows="2"></textarea>
+              <mat-error *ngIf="f['addresses'].errors?.['required']">Address is required</mat-error>
+            </mat-form-field>
+
+            <!-- Birthday -->
+            <mat-label class="mat-subtitle-2 f-s-14 f-w-600 m-b-12 d-block">Birthday</mat-label>
+            <mat-form-field appearance="outline" class="w-100" color="primary">
+              <input matInput [matDatepicker]="picker" formControlName="birthday" placeholder="Choose your birthday">
+              <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+              <mat-datepicker #picker></mat-datepicker>
+              <mat-error *ngIf="f['birthday'].errors?.['required']">Birthday is required</mat-error>
+            </mat-form-field>
+
+            <!-- Photo Upload -->
+            <mat-label class="mat-subtitle-2 f-s-14 f-w-600 m-b-12 d-block">Profile Photo</mat-label>
+            <div class="m-b-16">
+              <input type="file" #photoInput (change)="onFileSelected($event)" accept="image/*" style="display: none;">
+              <button mat-stroked-button type="button" (click)="photoInput.click()" class="w-100">
+                <div class="d-flex align-items-center">
+                  <mat-icon class="m-r-8">cloud_upload</mat-icon>
+                  Choose Photo
+                </div>
+              </button>
+              <div *ngIf="selectedFile" class="m-t-8">
+                <span class="f-s-12">{{ selectedFile.name }}</span>
+                <button mat-icon-button color="warn" (click)="removePhoto()">
+                  <mat-icon>close</mat-icon>
+                </button>
+              </div>
+              <mat-error *ngIf="photoError" class="f-s-12">{{ photoError }}</mat-error>
+              <mat-progress-bar *ngIf="uploadProgress > 0" mode="determinate" [value]="uploadProgress"></mat-progress-bar>
+            </div>
+            <!-- Password -->
+            <mat-label class="mat-subtitle-2 f-s-14 f-w-600 m-b-12 d-block">Password</mat-label>
+            <mat-form-field appearance="outline" class="w-100" color="primary">
+              <input matInput formControlName="password" type="password" placeholder="Password">
+              <mat-error *ngIf="f['password'].errors?.['required']">Password is required</mat-error>
+              <mat-error *ngIf="f['password'].errors?.['minlength']">Minimum 8 characters required</mat-error>
+            </mat-form-field>
+
+            <!-- Confirm Password -->
+            <mat-label class="mat-subtitle-2 f-s-14 f-w-600 m-b-12 d-block">Confirm Password</mat-label>
+            <mat-form-field appearance="outline" class="w-100" color="primary">
+              <input matInput [(ngModel)]="confirmPassword" type="password" placeholder="Confirm Password" 
+                [ngModelOptions]="{standalone: true}">
+              <mat-error *ngIf="confirmPassword && form.value.password !== confirmPassword">
+                Passwords don't match
+              </mat-error>
+            </mat-form-field>
+
+            <button mat-flat-button color="primary" class="w-100" type="submit" 
+              [disabled]="form.invalid || !selectedFile || (form.value.password !== confirmPassword)">
+              Sign Up
+            </button>
+          </form>
+
+          <div *ngIf="isLoading" class="text-center p-24">
+            <mat-spinner diameter="40"></mat-spinner>
+          </div>
+
+          <span class="d-block f-w-500 text-center m-t-24">
+            Already have an Account?
+            <a [routerLink]="['/authentication/login']" class="text-decoration-none text-primary f-w-500 f-s-14">
+              Sign In
+            </a>
+          </span>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </div>
+</div>

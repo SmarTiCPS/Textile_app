@@ -1,0 +1,14 @@
+<mat-card class="cardWithShadow productcard overflow-hidden">
+    <mat-card-content>
+      <div class="d-flex align-items-center">
+        <img *ngIf="factory.photo" [src]="factory.photo" class="rounded-circle" width="45" height="45" alt="Factory photo">
+        <div class="ms-3">
+          <h4 class="mb-0">{{ factory.name }}</h4>
+          <span class="text-muted">{{ factory.address }}</span>
+        </div>
+      </div>
+      <div class="mt-3">
+        <button mat-button color="warn" (click)="onDelete()">Delete</button>
+      </div>
+    </mat-card-content>
+  </mat-card>

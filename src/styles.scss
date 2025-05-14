@@ -1,0 +1,23 @@
+/* You can add global styles to this file, and also import other style files */
+  /* Custom styles for the alert snackbar */
+  .alert-snackbar {
+    background-color: #ff4444; /* Red background for alerts */
+    color: white; /* White text */
+    font-weight: bold; /* Bold text */
+    border-radius: 4px; /* Rounded corners */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2); /* Add shadow */
+  }
+  
+  /* Optional: Add animation for better visibility */
+  @keyframes slideIn {
+    from {
+      transform: translateX(100%);
+    }
+    to {
+      transform: translateX(0);
+    }
+  }
+  
+  .alert-snackbar {
+    animation: slideIn 0.5s ease-out;
+  }

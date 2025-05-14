@@ -1,0 +1,26 @@
+<h2 mat-dialog-title>Favorite Animal</h2>
+<mat-dialog-content>
+    <mat-card>
+      <form  #postForm="ngForm">
+          <mat-form-field>
+              <input matInput type="text" name="name" #title="ngModel" ngModel required minlength="3" placeholder="Post name"> <!--without form element add [(ngModel)]="entredTitle" to listne to input entred -->
+          </mat-form-field>
+          <mat-form-field><!--to use the angular materiale should write the element into <mat-form-field>-->
+              <input matInput type="text" name="email" #title="ngModel" ngModel required minlength="3" placeholder="Post email"> <!--without form element add [(ngModel)]="entredTitle" to listne to input entred -->
+              <!--
+                  if we write an proprety between [] : [value] ="scriptcode"
+                  if we need to create a reference(id) to select this element use #nameVar and add it it in your function
+                  -create ngModel to define the value of input in a proprite [(ngModel)]="namProp"
+              -->
+          </mat-form-field>
+      <!--addeventlistening with angular component (nameEvents) = "componentFunction()"-->
+          <button mat-raised-button color="accent" type="submit">Save Post</button>
+      </form>
+
+  </mat-card>
+</mat-dialog-content>
+
+
+<!-- Copyright 2024 Google LLC. All Rights Reserved.
+    Use of this source code is governed by an MIT-style license that
+    can be found in the LICENSE file at https://angular.io/license -->

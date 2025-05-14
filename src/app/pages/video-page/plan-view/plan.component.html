@@ -1,0 +1,43 @@
+<mat-card class="cardWithShadow">
+<div class="floor-plan-container">
+    <img src="assets/floorplan.jpg" alt="Floor Plan" class="floor-plan-image" />
+    
+    <!-- Interactive areas for rooms -->
+    <div *ngFor="let room of rooms"
+         class="interactive-area"
+         [style.left.px]="room.x"
+         [style.top.px]="room.y"
+         [style.width.px]="room.width"
+         [style.height.px]="room.height"
+         (click)="onRoomClick(room)">
+    </div>
+  
+    <!-- Interactive areas for safety equipment -->
+    <div *ngFor="let equipment of safetyEquipment"
+         class="interactive-area"
+         [style.left.px]="equipment.x"
+         [style.top.px]="equipment.y"
+         [style.width.px]="equipment.width"
+         [style.height.px]="equipment.height"
+         (click)="onEquipmentClick(equipment)">
+    </div>
+  </div>
+</mat-card>
+<!-- <mat-card class="cardWithShadow">
+    <div>
+        
+        <button mat-button (click)="fileInput.click()">Choose File</button>
+        <input #fileInput type="file" (change)="onImageUpload($event)" accept="image/*" style="display: none;">
+        <canvas #imageCanvas (mousedown)="onMouseDown($event)" (mouseup)="onMouseUp($event)"></canvas>
+        <button mat-button (click)="getZoneCoordinates()">Get Zone Coordinates</button>
+    </div>
+</mat-card> -->
+<!-- <div>
+    <canvas #floorPlanCanvas width="800" height="600"></canvas>
+  </div> -->
+  <mat-card class="cardWithShadow">
+    <div class="floor-plan-container">
+    <canvas #floorCanvas width="1500" height="1050"></canvas>
+
+  </div>
+</mat-card>
